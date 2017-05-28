@@ -9,6 +9,9 @@ if __name__ == '__main__':
         val = float(val)
         tot = float(tot)
         if uid == cur_uid:
+            # This works because Hadoop sorts the mapper's output by
+            # the key (uid in this case) before it is passed into the
+            # reducer
             cur_val += val
             cur_tot += tot
         else:
