@@ -1,6 +1,8 @@
 import sys
 
 if __name__ == '__main__':
+    # dta_on_uid
+    # ----------
     # key = uid
     # val = tuple(value sum, number of observations)
     dta_on_uid = {}
