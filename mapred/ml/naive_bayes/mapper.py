@@ -22,7 +22,7 @@ if __name__ == '__main__':
     for l in sys.stdin:
         txt, lbl = l.strip().split('\t')
         lbl = int(lbl)
-        tkns = tokenizer.tokenize(txt)
+        tkns = set(tokenizer.tokenize(txt))
         for tkn in tkns:
             if tkn in stop:
                 continue
