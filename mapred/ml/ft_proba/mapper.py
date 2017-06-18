@@ -3,10 +3,14 @@ import sys
 import argparse
 import nltk
 
+
 def get_args():
     p = argparse.ArgumentParser()
     p.add_argument('--stopwords', type=str, default='')
     return p.parse_args()
+
+def genlblkey(lbl):
+    return '__' + str(lbl) + '__'
 
 if __name__ == '__main__':
     # postive label = 1
@@ -23,7 +27,9 @@ if __name__ == '__main__':
     for l in sys.stdin:
         txt, lbl = l.strip().split('\t')
         lbl = int(lbl)
-        tkns = set(tokenizer.tokenize(txt))
+        lblkey = genlblkey(lbl)
+        tkns = tokenizer.tokenize(txt) + [lblkey]
+        tkns = set(tkns)
         for tkn in tkns:
             if tkn in stop:
                 continue
